@@ -1,0 +1,38 @@
+<!--<ion-card *ngFor="let item of items">-->
+<!--<ion-item>-->
+<!--<ion-avatar slot="start">-->
+<!--<img src="assets/img/{{item.imageUrl}}">-->
+<!--</ion-avatar>-->
+<!--<ion-label>{{item.title}}</ion-label>-->
+<!--</ion-item>-->
+<!--<ion-card-header>-->
+<!--<ion-card-subtitle>{{item.description}}</ion-card-subtitle>-->
+<!--</ion-card-header>-->
+<!--<ion-card-content>-->
+<!--<ion-list *ngFor="let skills of item.position_details">-->
+<!--<ion-item>{{ skills.skill.title }}</ion-item>-->
+<!--</ion-list>-->
+<!--<ion-button size='medium' [href]="navigateTo(item.id, item)" expand='full' color="dark">View</ion-button>-->
+<!--</ion-card-content>-->
+
+<!--</ion-card>-->
+
+<ion-list lines="none" *ngFor="let item of items">
+    <ion-item [href]="navigateTo(item.id, item)" >
+        <ion-thumbnail slot="start">
+            <img src="assets/img/{{item.imageUrl}}">
+        </ion-thumbnail>
+        <ion-label>
+            <h2 style="font-weight: bold">{{item.title}}</h2>
+            <h3 text-wrap>{{item.short_description | slice: 0:160}}...</h3>
+        </ion-label>
+    </ion-item>
+</ion-list>
+<!--<ion-grid>-->
+<!--<ion-row>-->
+<!--<ion-col>{{item.title}}</ion-col>-->
+<!--</ion-row>-->
+<!--<ion-row>-->
+<!--<ion-col>{{item.short_description | slice: 0:30 }}</ion-col>-->
+<!--</ion-row>-->
+<!--</ion-grid>-->

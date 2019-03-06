@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button (click)="onBackClick()" defaultHref=""></ion-back-button>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+        <ion-list *ngIf="positions.length > 0">
+            <div *ngFor="let position of positions">
+                <div *ngFor="let pos_attributes of position">
+                    <!--Job Title-->
+
+                    <h1>{{ pos_attributes.title }}</h1>
+                    <ion-img src="assets/img/{{pos_attributes.imageUrl}}" id="logo"></ion-img>
+                    {{ pos_attributes.description}}
+                    <!--Card-->
+                    <ion-card *ngFor="let pd_attributes of pos_attributes.position_details">
+                        <!--List of Skills-->
+                        <ion-card-header>
+                            <ion-card-title>
+                                <ion-grid>
+                                    <ion-row>
+                                        <ion-col size="1" align-items-start ><ion-checkbox (click)="addRemoveSkillId($event, pd_attributes.skill.id)" checked></ion-checkbox></ion-col>
+                                        <ion-col size="11">{{ pd_attributes.skill.title}}</ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-card-title>
+                            <ion-card-subtitle>
+                                <ion-grid>
+                                    <ion-row>
+                                        <ion-col size="1" align-items-start></ion-col>
+                                        <ion-col size="11">{{ pd_attributes.skill.description}}</ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content *ngFor="let skill_items of pd_attributes.skill.skill_details">
+                            <ng-container *ngIf="skill_items.certification_id !== null">
+                            Certification
+                                <div>
+                                <ion-item>
+                                <ion-icon name="school"></ion-icon>
+                                <ion-label>{{ skill_items.certification.title }}</ion-label>
+                                </ion-item>
+                                <ion-list *ngFor="let courses of skill_items.certification.certification_details">
+                                <ion-item>{{ courses.course.title }}</ion-item>
+                                </ion-list>
+                            </div>
+                            </ng-container>
+                            <ng-container *ngIf="skill_items.training_id !== null">
+                            Courses
+                                <div>
+                                <ion-list *ngFor="let course of skill_items.training_detail.courses">
+                                    <ion-item>
+                                        <ion-icon name="medal"></ion-icon>
+                                        <ion-label><h5>&nbsp;{{ course.title }}</h5></ion-label>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+                            </ng-container>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </div>
+        </ion-list>
+        <ion-button  color="dark" size='medium' (click)="setSkillsList()" expand='full' [href]="'/position/' + positionId + '/courses' + ')'">
+            View Programs
+        </ion-button>
+    </ion-content>

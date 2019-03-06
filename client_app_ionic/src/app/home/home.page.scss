@@ -1,0 +1,54 @@
+ion-content {
+  opacity: 1;
+  animation: fadeIn 5s ease;
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+#logo {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.home-overlay{
+  position: absolute;
+  background-position: top left;
+  height: 100%;
+  width: 100%;
+
+}
+
+ion-content {
+  --ion-background-color: transparent;
+}
+
+ion-card{
+  --ion-text-color: white !important;
+}
+
+h1, h6{
+  color: white !important;
+}
+
+:host {
+  background-color: black;
+}
+
+.container {
+  background-image: url("/assets/img/splash2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  opacity: .25;
+}
+
+
+

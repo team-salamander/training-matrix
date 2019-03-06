@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-uppercase>Positions</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-menu (searchCompleted)="filterPositions($event)" [items]="copyOfPositions"></app-menu>
+  <app-search (searchCompleted)="filterPositions($event)" [items]="copyOfPositions"></app-search>
+  <app-position-list *ngFor="let p of positions"
+                     [items]="p"
+                     [navigateTo]="generateUrl"
+  ></app-position-list>
+</ion-content>
